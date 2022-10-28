@@ -17,6 +17,7 @@ public class gestionPerso : MonoBehaviour
 
     void Awake()
     {
+        //Touche pour sauter
         btnSaut.action.performed += _ => saut(1);
     }
 
@@ -28,22 +29,21 @@ public class gestionPerso : MonoBehaviour
 
     void Update()
     {
-        //Saut
-
-        //if (Input.GetKeyDown(KeyCode.Space) && persoController.isGrounded) saut(1);
-        //else isJumping = false;
-        
         //physique
         velocityY += gravity * Time.deltaTime;
         currentSpeed = new Vector2(persoController.velocity.x, persoController.velocity.z).magnitude;
         Velocity = currentSpeed * transform.forward + velocityY * Vector3.up;
         persoController.Move(Velocity * Time.deltaTime);
     }
+    //Saut avec bouton
     public void saut(float forceSaut)
     {
-        isJumping = true;
-        float jumpVelocity = Mathf.Sqrt(-2 * gravity * jumpHeight * forceSaut);
-        velocityY = jumpVelocity;
+        if (persoController.isGrounded) //Déactiver saut infini
+        {
+            isJumping = true;
+            float jumpVelocity = Mathf.Sqrt(-2 * gravity * jumpHeight * forceSaut);
+            velocityY = jumpVelocity;
+        }
     }
     void OnTriggerEnter(Collider infoCol)
     {
