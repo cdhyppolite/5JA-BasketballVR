@@ -1114,6 +1114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 1
+  btnSaut: {fileID: -430469746127050860, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &217621495
 GameObject:
   m_ObjectHideFlags: 0

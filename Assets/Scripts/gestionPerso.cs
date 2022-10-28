@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class gestionPerso : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class gestionPerso : MonoBehaviour
     float currentSpeed;
     float gravity = -10;
     public float jumpHeight = 1f;
+
+    [SerializeField] InputActionReference btnSaut;
+
+    void Awake()
+    {
+        btnSaut.action.performed += _ => saut(1);
+    }
 
     void Start()
     {
