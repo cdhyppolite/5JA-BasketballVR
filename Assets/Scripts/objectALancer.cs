@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class objectALancer : MonoBehaviour
 {
+    public int valeur = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class objectALancer : MonoBehaviour
         if (infoCol.name == "zonePanier")
         {
             Destroy(gameObject);
+            gestionPerso.score += valeur;
         }
     }
 }
