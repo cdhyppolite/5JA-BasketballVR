@@ -29,8 +29,9 @@ public class gestionPerso : MonoBehaviour
     void Update()
     {
         //Saut
-        if (Input.GetKeyDown(KeyCode.Space) && persoController.isGrounded) saut(1);
-        else isJumping = false;
+
+        //if (Input.GetKeyDown(KeyCode.Space) && persoController.isGrounded) saut(1);
+        //else isJumping = false;
         
         //physique
         velocityY += gravity * Time.deltaTime;
