@@ -5,11 +5,13 @@ using UnityEngine;
 public class objectALancer : MonoBehaviour
 {
     public int valeur = 1;
+    bool aMarquer;
 
     void OnTriggerEnter(Collider infoCol)
     {
-        if (infoCol.name == "zonePanier")
+        if ((infoCol.name == "zonePanier") && (!aMarquer))
         {
+            aMarquer = true;
             gestionPerso.score += valeur;
             gestionPerso.jouerSonBut();
             

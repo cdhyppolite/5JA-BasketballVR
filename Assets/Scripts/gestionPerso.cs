@@ -20,6 +20,7 @@ public class gestionPerso : MonoBehaviour
     public TextMeshProUGUI zoneScore;
     public static int score;
     static AudioSource sonBut;
+    public Transform projecteur;
 
     //Object victoire
     public GameObject coupeStanley;
@@ -31,7 +32,6 @@ public class gestionPerso : MonoBehaviour
         //Touche pour sauter
         btnSaut.action.performed += _ => saut(1);
     }
-
     void Start()
     {
         persoController = GetComponent<CharacterController>();
@@ -44,7 +44,7 @@ public class gestionPerso : MonoBehaviour
 
     void Update()
     {
-        //physique
+        //Physique
         velocityY += gravity * Time.deltaTime;
         currentSpeed = new Vector2(persoController.velocity.x, persoController.velocity.z).magnitude;
         Velocity = currentSpeed * transform.forward + velocityY * Vector3.up;
@@ -53,6 +53,13 @@ public class gestionPerso : MonoBehaviour
         //Afficher le score
         zoneScore.text = score.ToString("00");
         if (score >= 10) coupeStanley.SetActive(true);
+
+        //Déplacement projecteur;
+        Vector3 newPosition = gameObject.transform.position;
+        newPosition.y = projecteur.position.y;
+        projecteur.position = newPosition;
+
+        projecteur.gameObject.SetActive(sonBut.isPlaying);
     }
     //Saut avec bouton
     public void saut(float forceSaut)

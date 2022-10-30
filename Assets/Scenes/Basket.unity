@@ -1244,6 +1244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 1
   zoneScore: {fileID: 1984821702}
+  projecteur: {fileID: 473304453}
   coupeStanley: {fileID: 1583687943}
   btnSaut: {fileID: -6759644001586596885, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
@@ -2398,7 +2399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &473304451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2431,8 +2432,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 50
+  m_Range: 22.57
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
