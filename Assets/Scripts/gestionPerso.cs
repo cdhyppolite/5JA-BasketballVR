@@ -19,6 +19,7 @@ public class gestionPerso : MonoBehaviour
     //Score
     public TextMeshProUGUI zoneScore;
     public static int score;
+    static AudioSource sonBut;
 
     //Object victoire
     public GameObject coupeStanley;
@@ -35,6 +36,7 @@ public class gestionPerso : MonoBehaviour
     {
         persoController = GetComponent<CharacterController>();
         Velocity = Vector3.zero;
+        sonBut = GetComponent<AudioSource>();
 
         coupeStanley.SetActive(false);
         score = 0;
@@ -67,5 +69,10 @@ public class gestionPerso : MonoBehaviour
     {
         if (infoCol.name == "SautCollider") saut(3);
         if (infoCol.name == "Recommencer") SceneManager.LoadScene(0); // Recharger la scène
+    }
+
+    public static void jouerSonBut()
+    {
+        sonBut.Play();
     }
 }

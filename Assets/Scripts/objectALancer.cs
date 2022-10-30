@@ -5,23 +5,28 @@ using UnityEngine;
 public class objectALancer : MonoBehaviour
 {
     public int valeur = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void OnTriggerEnter(Collider infoCol)
     {
         if (infoCol.name == "zonePanier")
         {
-            Destroy(gameObject);
             gestionPerso.score += valeur;
+            gestionPerso.jouerSonBut();
+            
+            StartCoroutine(OuvrirLumiere(infoCol.transform.GetChild(0).gameObject));
+
+            Destroy(gameObject,10f);
         }
+    }
+
+    IEnumerator OuvrirLumiere(GameObject lumiere)
+    {
+        //Ouvrir
+        lumiere.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+
+        yield return new WaitForSeconds(9);
+
+        //Éteindre
+        lumiere.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
     }
 }
