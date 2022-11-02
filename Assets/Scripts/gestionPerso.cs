@@ -19,6 +19,7 @@ public class gestionPerso : MonoBehaviour
     //Score
     public TextMeshProUGUI zoneScore;
     public static int score;
+    public int scoreFinal =15;
     static AudioSource sonBut;
     public Transform projecteur;
 
@@ -52,7 +53,7 @@ public class gestionPerso : MonoBehaviour
 
         //Afficher le score
         zoneScore.text = score.ToString("00");
-        if (score >= 10) coupeStanley.SetActive(true);
+        if (score >= scoreFinal) coupeStanley.SetActive(true);
 
         //Déplacement projecteur;
         Vector3 newPosition = gameObject.transform.position;
