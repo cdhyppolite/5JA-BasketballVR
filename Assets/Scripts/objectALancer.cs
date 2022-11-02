@@ -11,6 +11,7 @@ public class objectALancer : MonoBehaviour
     {
         if ((infoCol.name == "zonePanier") && (!aMarquer))
         {
+            GetComponent<Collider>().material = null;
             aMarquer = true;
             gestionPerso.score += valeur;
             gestionPerso.jouerSonBut();
