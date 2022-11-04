@@ -15,11 +15,13 @@ public class gestionPerso : MonoBehaviour
     float currentSpeed;
     float gravity = -10;
     public float jumpHeight = 1f;
+    float heightInit;
+    bool isCrouching;
 
     //Score
     public TextMeshProUGUI zoneScore;
     public static int score;
-    public int scoreFinal =15;
+    public int scoreFinal = 15;
     static AudioSource sonBut;
     public Transform projecteur;
 
@@ -27,15 +29,17 @@ public class gestionPerso : MonoBehaviour
     public GameObject coupeStanley;
 
     [SerializeField] InputActionReference btnSaut;
+    [SerializeField] InputActionReference btnCrouch;
 
     void Awake()
     {
-        //Touche pour sauter
-        btnSaut.action.performed += _ => saut(1);
+        btnSaut.action.performed += _ => saut(1); //Touche pour sauter
+        btnCrouch.action.performed += _ => crouch(); // Appui sur la touche
     }
     void Start()
     {
         persoController = GetComponent<CharacterController>();
+        heightInit = persoController.height;
         Velocity = Vector3.zero;
         sonBut = GetComponent<AudioSource>();
 
@@ -72,11 +76,26 @@ public class gestionPerso : MonoBehaviour
             velocityY = jumpVelocity;
         }
     }
+    //S'accroupir avec bouton
+    public void crouch()
+    {
+        if (persoController.isGrounded)
+        {
+            isCrouching = !isCrouching;
+            print("crouch, "+ isCrouching);
+            if (!isCrouching) saut(1);
+            persoController.height = isCrouching ? .1f : heightInit;
+        }
+    }
     //Collisions
     void OnTriggerEnter(Collider infoCol)
     {
         if (infoCol.name == "SautCollider") saut(3);
-        if (infoCol.name == "Recommencer") SceneManager.LoadScene(0); // Recharger la scène
+        if (infoCol.name == "Recommencer") SceneManager.LoadSceneAsync(0); // Recharger la scène
+    }
+    void OnTriggerStay(Collider infoCol)
+    {
+        if (infoCol.name == "SautCollider") saut(3);
     }
 
     public static void jouerSonBut()
