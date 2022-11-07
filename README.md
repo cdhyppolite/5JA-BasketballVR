@@ -5,5 +5,6 @@ EXPÉRIMENTATION EN JEU - VOLET PROGRAMMATION
 - [`Trampoline`](https://www.models-resource.com/mobile/mytamagotchiforever/model/25376/)
 - [`Objects de Mario Kart`](https://www.models-resource.com/wii_u/mariokart8/)
 - [`Coupe Stanley`](https://sketchfab.com/3d-models/stanley-cup-141093a863b948299c97e6519e159823)
+- [`Ailes`](- [`Coupe Stanley`](https://sketchfab.com/3d-models/stanley-cup-141093a863b948299c97e6519e159823))
  
 ![Image](./Assets/BasketBall/Basketball.png "Image du Thème")
