@@ -91,7 +91,7 @@ public class gestionPerso : MonoBehaviour
     void OnTriggerEnter(Collider infoCol)
     {
         if (infoCol.name == "SautCollider") saut(3);
-        if (infoCol.name == "Recommencer") SceneManager.LoadSceneAsync(0); // Recharger la scène
+        //if (infoCol.name == "Recommencer") SceneManager.LoadSceneAsync(0); // Recharger la scène
     }
     void OnTriggerStay(Collider infoCol)
     {
@@ -101,5 +101,12 @@ public class gestionPerso : MonoBehaviour
     public static void jouerSonBut()
     {
         sonBut.Play();
+    }
+    public void recommencer() {
+        SceneManager.LoadSceneAsync(0);
+    }
+    public void particuleCoupeStanley(bool valeur) { 
+        coupeStanley.transform.Find("Eternal Light").gameObject.SetActive(valeur);
+        print(coupeStanley.transform.Find("Eternal Light").gameObject);
     }
 }
